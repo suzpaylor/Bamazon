@@ -1,6 +1,21 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 var Table = require('cli-table');
+var emojis = require('emojis');
+var colors = require('colors');
+
+colors.setTheme({
+    silly: 'rainbow',
+    input: 'grey',
+    verbose: 'cyan',
+    prompt: 'grey',
+    info: 'green',
+    data: 'grey',
+    help: 'cyan',
+    warn: 'yellow',
+    debug: 'blue',
+    error: 'red'
+  });
 
 
 var connection = mysql.createConnection({
@@ -23,14 +38,15 @@ function startPrompt() {
 
         type: "confirm",
         name: "confirm",
-        message: "Welcome to Suzazon! Would you like to view my store inventory? Feel free to buy me any of these items for Christmas!",
+        message: "Welcome to Suzazon! Feel free to buy me any of these items for ".green + emojis.unicode(' :santa: ') +
+        " Christmas!".green + emojis.unicode(' :christmas_tree: ') +  " Would you like to view my store inventory?".red,
         default: true
 
     }]).then(function(user) {
         if (user.confirm === true) {
             inventory();
         } else {
-            console.log("Visit us again Soon!");
+            console.log(emojis.unicode(':blush:   Visit us again soon! :blush: '));
         }
     });
 }
@@ -59,7 +75,7 @@ function inventory() {
             );
           }
             console.log("");
-            console.log("====================================================== Current Suzazon Inventory ======================================================");
+            console.log("======================================================".rainbow + "Current Suzazon Inventory".cyan + "======================================================".rainbow);
             console.log("");
             console.log(table.toString());
             console.log("");
@@ -74,14 +90,14 @@ function continuePrompt() {
 
         type: "confirm",
         name: "continue",
-        message: "Would you like to purchase an item?",
+        message: "Would you like to purchase an item? ".green + emojis.unicode("  :money_with_wings:  ") + emojis.unicode("  :money_with_wings:  ") + emojis.unicode("  :money_with_wings:  "),
         default: true
 
     }]).then(function(user) {
         if (user.continue === true) {
             selectionPrompt();
         } else {
-            console.log("*****************Come back again Soon!***********************");
+            console.log(emojis.unicode(':blush:   Visit us again soon! :blush: '));
         }
     });
 }
@@ -92,12 +108,12 @@ function selectionPrompt() {
 
             type: "input",
             name: "inputId",
-            message: "Please enter the ID number of the item you would like to purchase.",
+            message: "Please enter the ID number of the item you would like to purchase: ".cyan + emojis.unicode(" :gift: "),
         },
         {
             type: "input",
             name: "inputNumber",
-            message: "How many would you like to purchase?",
+            message: "How many would you like to purchase?".magenta + emojis.unicode(" :package: "),
 
         }
     ]).then(function(userPurchase) {
@@ -107,25 +123,25 @@ function selectionPrompt() {
 
                 if (userPurchase.inputNumber > res[i].stock_quantity) {
 
-                    console.log("================================================================");
-                    console.log("Item out of stock. You will have to pay double for this on eBay.");
-                    console.log("================================================================");
+                    console.log("================================================================".rainbow);
+                    console.log(emojis.unicode(" :sob: ") + "Item out of stock. You will have to pay double for this on eBay".cyan + emojis.unicode(" :sob: "));
+                    console.log("================================================================".rainbow);
                     startPrompt();
 
                 } else {
                     //list item information for user for confirm prompt
-                    console.log("========================================================");
-                    console.log("It's your lucky day! We are able to complete your order.");
-                    console.log("========================================================");
-                    console.log("You have selected:");
-                    console.log("--------------------------------------------------------");
-                    console.log("Item: " + res[i].product_name);
-                    console.log("Department: " + res[i].department_name);
-                    console.log("Price: $" + res[i].price);
-                    console.log("Quantity: " + userPurchase.inputNumber);
-                    console.log("--------------------------------------------------------");
-                    console.log("Total: $" + res[i].price * userPurchase.inputNumber);
-                    console.log("========================================================");
+                    console.log("================================================================".rainbow);
+                    console.log(emojis.unicode(" :grinning: ") + " It's your lucky day! We are able to complete your order!".cyan + emojis.unicode(" :grinning: "));
+                    console.log("=================================================================".rainbow);
+                    console.log("You have selected: ".green);
+                    console.log("-----------------------------------------------------------------".rainbow);
+                    console.log("Item: ".warn + emojis.unicode(" :gift: ") + res[i].product_name);
+                    console.log("Department: ".debug +emojis.unicode(" :convenience_store: ")+ " " + res[i].department_name);
+                    console.log(emojis.unicode(" :dollar: ") + " Price:".magenta + "$" + res[i].price);
+                    console.log(emojis.unicode(" :1234: ") + " Quantity: ".cyan + userPurchase.inputNumber);
+                    console.log("-----------------------------------------------------------------".rainbow);
+                    console.log(emojis.unicode(" :astonished: ") + " Total:".yellow + "$" + res[i].price * userPurchase.inputNumber);
+                    console.log("=================================================================".rainbow);
 
                     var newStock = (res[i].stock_quantity - userPurchase.inputNumber);
                     var purchaseId = (userPurchase.inputId);
@@ -142,7 +158,7 @@ function confirmPrompt(newStock, purchaseId) {
 
         type: "confirm",
         name: "confirmPurchase",
-        message: "Are you sure you would like to purchase this item and quantity?",
+        message: "Are you sure you would like to purchase this item and quantity?".teal,
         default: true
 
     }]).then(function(userConfirm) {
@@ -153,14 +169,14 @@ function confirmPrompt(newStock, purchaseId) {
                 item_id: purchaseId
             }], function(err, res) {});
 
-            console.log("=============================================================");
-            console.log("Transaction completed. Isn't it fun to shop in a console app?");
-            console.log("=============================================================");
+            console.log("================================================".rainbow);
+            console.log(emojis.unicode(" :see_no_evil: ") + " Transaction completed. ".cyan + emojis.unicode(" :see_no_evil: "));
+            console.log("================================================".rainbow);
             startPrompt();
         } else {
-            console.log("=============================================================");
-            console.log("*****************Come back again Soon!***********************");
-            console.log("=============================================================");
+            console.log("================================================".rainbow);
+            console.logV(emojis.unicode(" :nerd: ") + "Isn't it fun to shop in the console?!".cyan + emojis.unicode(" :nerd: "));
+            console.log("================================================".rainbow);
             startPrompt();
         }
     });

@@ -24,6 +24,6 @@ VALUES
 ("Women's Ninja Suit", "Outdoors", 109.00, 20),
 ("Hotronic FootWarmer", "Outdoors", 184.00, 40),
 ("Cottoncandy Machine", "Kitchen", 655.00, 20),
-("Oakley Snowgoggles", "Downhill Skiing", 159.60, 10);
+("Oakley Snowgoggles", "Downhill Skiing", 159.00y, 10);
 
 SELECT * FROM products;
