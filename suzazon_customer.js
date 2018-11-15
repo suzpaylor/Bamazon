@@ -39,7 +39,7 @@ function startPrompt() {
         type: "confirm",
         name: "confirm",
         message: "Welcome to Suzazon! Feel free to buy me any of these items for ".green + emojis.unicode(' :santa: ') +
-        " Christmas!".green + emojis.unicode(' :christmas_tree: ') +  " Would you like to view my store inventory?".red,
+        " Christmas!".green + emojis.unicode(' :christmas_tree: ') +  "                 Would you like to view my store inventory?".red,
         default: true
 
     }]).then(function(user) {
@@ -131,16 +131,27 @@ function selectionPrompt() {
                 } else {
                     //list item information for user for confirm prompt
                     console.log("================================================================".rainbow);
+                    console.log("");
                     console.log(emojis.unicode(" :grinning: ") + " It's your lucky day! We are able to complete your order!".cyan + emojis.unicode(" :grinning: "));
+                    console.log("");
                     console.log("=================================================================".rainbow);
+                    console.log("");
                     console.log("You have selected: ".green);
+                    console.log("");
                     console.log("-----------------------------------------------------------------".rainbow);
+                    console.log("");
                     console.log("Item: ".warn + emojis.unicode(" :gift: ") + res[i].product_name);
+                    console.log("");
                     console.log("Department: ".debug +emojis.unicode(" :convenience_store: ")+ " " + res[i].department_name);
+                    console.log("");
                     console.log(emojis.unicode(" :dollar: ") + " Price:".magenta + "$" + res[i].price);
+                    console.log("");
                     console.log(emojis.unicode(" :1234: ") + " Quantity: ".cyan + userPurchase.inputNumber);
+                    console.log("");
                     console.log("-----------------------------------------------------------------".rainbow);
+                    console.log("");
                     console.log(emojis.unicode(" :astonished: ") + " Total:".yellow + "$" + res[i].price * userPurchase.inputNumber);
+                    console.log("");
                     console.log("=================================================================".rainbow);
 
                     var newStock = (res[i].stock_quantity - userPurchase.inputNumber);
@@ -169,14 +180,18 @@ function confirmPrompt(newStock, purchaseId) {
                 item_id: purchaseId
             }], function(err, res) {});
 
-            console.log("================================================".rainbow);
+            console.log("=================================================================".rainbow);
+            console.log("");
             console.log(emojis.unicode(" :see_no_evil: ") + " Transaction completed. ".cyan + emojis.unicode(" :see_no_evil: "));
-            console.log("================================================".rainbow);
+            console.log("");
+            console.log("=================================================================".rainbow);
             startPrompt();
         } else {
-            console.log("================================================".rainbow);
-            console.logV(emojis.unicode(" :nerd: ") + "Isn't it fun to shop in the console?!".cyan + emojis.unicode(" :nerd: "));
-            console.log("================================================".rainbow);
+            console.log("=================================================================".rainbow);
+            console.log("");
+            console.log(emojis.unicode(" :computer: ") + emojis.unicode(" :laughing:  ")+ "Isn't it fun to shop in the console?!".cyan + emojis.unicode(" :laughing: ") + emojis.unicode(" :computer: "));
+            console.log("");
+            console.log("=================================================================".rainbow);
             startPrompt();
         }
     });
