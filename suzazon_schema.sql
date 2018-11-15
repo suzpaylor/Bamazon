@@ -21,7 +21,7 @@ VALUES
 ("Electric Blanket", "Home", 49.00, 15),
 ("Nordica 2019 Skis", "Downhill Skiing", 925.00, 10),
 ("Rainbow Ski Suit", "Downhill Skiing", 170.00, 2),
-("Women'sNinja Suit", "Outdoors", 109.00, 20),
+("Women's Ninja Suit", "Outdoors", 109.00, 20),
 ("Hotronic FootWarmer", "Outdoors", 184.00, 40),
 ("Cottoncandy Machine", "Kitchen", 655.00, 20),
 ("Oakley Snowgoggles", "Downhill Skiing", 159.60, 10);

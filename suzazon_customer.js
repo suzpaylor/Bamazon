@@ -23,7 +23,7 @@ function startPrompt() {
 
         type: "confirm",
         name: "confirm",
-        message: "Welcome to Suzazon! Would you like to view my store inventory?",
+        message: "Welcome to Suzazon! Would you like to view my store inventory? Feel free to buy me any of these items for Christmas!",
         default: true
 
     }]).then(function(user) {
