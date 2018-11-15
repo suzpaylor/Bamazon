@@ -1,4 +1,4 @@
-# bamazon
+# 🛒bamazon🛒
 
 # Node.js & MySQL
 
@@ -40,6 +40,6 @@ The user can't get the rainbow one-piece ski suit out of their head and goes bac
 
 The inventory for the ski suits is now set to zero, but the user is obsessed 🙃 and will check back often to see if anymore of these items are in stock.  
 
-Scott Paylor aka Santa 🎅🏻 if you searched through my github repo like I told you earlier I wouldn't mind any of these gifts this year.  Well the rainbow ski suit ⛷️🦄🌈 is kind of a joke but would totally embarrass the kids so I wouldn't complain too much. Winter is coming.  Everything in my "store" will keep me warm and there is even a gift option under $50.  ❄️BRRRR❄️.  Except the lily pad.  We NEED that for 🐻Bear Lake🚤.  And I could live off of cotton candy.
+Scott Paylor aka Santa 🎅🏻 if you searched through my github repo like I told you earlier I wouldn't mind any of these gifts this year.  Well the rainbow ski suit ⛷️🦄🌈 is kind of a joke but would totally embarrass the kids so I wouldn't complain too much. Winter is coming.  Everything in my "store" will keep me warm and there is even a gift option under $50.  ❄️BRRRR.  Except the lily pad.  We NEED that for 🐻Bear Lake🚤.  And I could live off of cotton candy.
 
 Final note: the "colors" node package works on all terminals I tested.  "Emojis" is a bit trickier.  I was only able to get these to work on the VSC console tests.  For some reason my gitbash is missing an extenstion to read the emojis.  Bu that problem is outside the scope of this class 😆 and I should really focus on something on more imporant things 🤣.
