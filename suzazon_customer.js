@@ -123,9 +123,9 @@ function selectionPrompt() {
 
                 if (userPurchase.inputNumber > res[i].stock_quantity) {
 
-                    console.log("================================================================".rainbow);
-                    console.log(emojis.unicode(" :sob: ") + "Item out of stock. You will have to pay double for this on eBay".cyan + emojis.unicode(" :sob: "));
-                    console.log("================================================================".rainbow);
+                    console.log("===============================================================================================".rainbow);
+                    console.log(emojis.unicode(" :sob: ") + "  Item out of stock. You will have to pay double for this on eBay".cyan + emojis.unicode(" :sob: "));
+                    console.log("===============================================================================================".rainbow);
                     startPrompt();
 
                 } else {
